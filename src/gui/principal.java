@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.Component;
@@ -29,7 +32,11 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
-
+/**
+ * Clase principal del GUI
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class principal {
 	private Borrar borrar;
 	private Annadir annadir;
@@ -94,7 +101,7 @@ public class principal {
 		frmDakkar.getContentPane().add(lblRallyDakkar);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\David Peralvo\\workspace\\proyectoFinal\\imagenes\\Dakar-etape-11-Des-podiums-chamboules_articlethumbnail.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("src\\imagenes\\Dakar-etape-11-Des-podiums-chamboules_articlethumbnail.jpg"));
 		lblNewLabel.setBounds(0, -11, 604, 372);
 		frmDakkar.getContentPane().add(lblNewLabel);
 		

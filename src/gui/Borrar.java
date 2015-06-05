@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -20,10 +23,19 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-
+/**
+ * Clase Borrar
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class Borrar extends JDialog {
-
+	/**
+	 * Campo contentPanel
+	 */
 	private final JPanel contentPanel = new JPanel();
+	/**
+	 * Campo textFiedl_Dorsal
+	 */
 	private JTextField textField_Dorsal;
 
 

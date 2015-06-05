@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -22,12 +25,33 @@ import java.awt.event.ActionEvent;
 import java.util.regex.Pattern;
 
 public class EjecutarEtapa extends VentanaPadre {
+	/**
+	 * Campo km
+	 */
 		private float km;
+		/**
+		 * Campo combustible
+		 */
 		private float combustible;
+		/**
+		 * Campo combustibleTotal
+		 */
 		private float combustibleTotal;
+		/**
+		 * Campo index
+		 */
 		private int index=0;
+		/**
+		 * Campo ValorCalculado
+		 */
 		private String valorCalculado;
+		/**
+		 * Campo etapa
+		 */
 		private ArrayListDakkar etapa;
+		/**
+		 * Campo exp.regular
+		 */
 		static final private Pattern partternKM=Pattern.compile("^\\d\\d\\d$");
 		
 
@@ -91,6 +115,12 @@ public class EjecutarEtapa extends VentanaPadre {
 		anterior.setEnabled(false);
 		mostrarVehiculosDakkar(etapa.get(index));
 	}
+	/**
+	 * M&eacute;todo que gestiona la el combustibles en los veh&iacute;culos.
+	 * @param inscripcion arraylist donde se guarda toda la inforamci&oacute;
+	 * @param vehiculo vehiculo del particpante
+	 * @throws CampoNoValidoException Excepci&oacute;on para la cantidad de km recorridos
+	 */
 	private void modificarCombustible(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo)throws CampoNoValidoException {
 		if(partternKM.matcher(textField_KM.getText()).matches()==false){
 			throw new CampoNoValidoException("Kilometros mal introducidos(000-999)");}
@@ -147,6 +177,9 @@ public class EjecutarEtapa extends VentanaPadre {
 		
 		
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest(){
 	if(index+1==etapa.size())
 		posterior.setEnabled(false);
@@ -158,15 +191,24 @@ public class EjecutarEtapa extends VentanaPadre {
 	else
 		anterior.setEnabled(true);
 }
-
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 private void mostrarSiguiente(){
 	mostrarVehiculosDakkar(etapa.get(++index));
 	bottonTest();
 }
+/**
+ * M&eacute;todo para mostrar al anterior participante
+ */
 private void mostrarAnterior(){
 	mostrarVehiculosDakkar(etapa.get(--index));
 	bottonTest();
 }
+	/**
+	* M&eacute;todo que muestra los veh&iacute;culos
+	* @param vehiculo vehiculo de la inscripci&oacute;
+	*/
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche) vehiculo;

@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -18,9 +21,19 @@ import proyecto.VehiculoDakkar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-
+/**
+ * Clase Buscar por categoria de motos
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class BuscarCategoriaMotos extends VentanaPadre {
+	/**
+	 * Campo index
+	 */
 	private int index=0;
+	/**
+	 * Campo CategoriaMotos
+	 */
 	private ArrayList<VehiculoDakkar>categoriaMotos;
 
 	public BuscarCategoriaMotos(final ArrayListDakkar inscripcion) {
@@ -109,6 +122,9 @@ public class BuscarCategoriaMotos extends VentanaPadre {
 			anterior.setEnabled(false);
 		}
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 	
 		if(index+1==categoriaMotos.size())
@@ -121,19 +137,32 @@ public class BuscarCategoriaMotos extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
-
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(categoriaMotos.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(categoriaMotos.get(--index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo que obtiene la categor&iacute;a de motos
+	 * @param MotoComboBox combobox de categor&iacute;a de motos
+	 * @return La categor&iacute;a de moto elegida
+	 */
 	CategoriaMotos getMoto(JComboBox<CategoriaMotos> MotoComboBox) {
 		CategoriaMotos moto = (CategoriaMotos) MotoComboBox.getSelectedItem();
 		return moto;}
-
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		Moto moto=(Moto) vehiculo;
 		textField_Dorsal.setText(moto.getDorsal());

@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -18,7 +21,11 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase repostar 
+ * @author David Peralvo
+ * @version 1.0
+ */
 public class Repostar extends VentanaPadre {
 		private int index=0;
 		private ArrayListDakkar listaRepostaje;
@@ -86,6 +93,9 @@ public class Repostar extends VentanaPadre {
 		
 		
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest(){
 	if(index+1==listaRepostaje.size())
 		posterior.setEnabled(false);
@@ -97,15 +107,25 @@ public class Repostar extends VentanaPadre {
 	else
 		anterior.setEnabled(true);
 }
-
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 private void mostrarSiguiente(){
 	mostrarVehiculosDakkar(listaRepostaje.get(++index));
 	bottonTest();
 }
+/**
+ * M&eacute;todo para mostrar al anterior participante
+ */
 private void mostrarAnterior(){
 	mostrarVehiculosDakkar(listaRepostaje.get(--index));
 	bottonTest();
+	
 }
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	*/
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche) vehiculo;
@@ -221,6 +241,11 @@ private void mostrarAnterior(){
 			
 		}
 	}
+	/**
+	 * M&eacute;todo que reposta a los veh&iacute;culos .
+	 * @param inscripcion arraylist que almacena la informaci&oacute;n
+	 * @param vehiculo veh&iacute;culo que reposta.
+	 */
 	private void RepostarVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche)vehiculo;

@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -33,7 +36,11 @@ import proyecto.vehiculoNoExisteException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-
+/**
+ * Clase A&nacute;adir
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class Annadir extends VentanaPadre {
 
 	public Annadir(final ArrayListDakkar inscripcion) {
@@ -174,6 +181,9 @@ public class Annadir extends VentanaPadre {
 			}
 		});
 	}
+	/**
+	 * M&eacute;todo que limpia los campos del formulario.
+	 */
 	private void clear() {
 		textField_Dorsal.setText("");
 		textField_Copiloto.setText("");
@@ -181,7 +191,14 @@ public class Annadir extends VentanaPadre {
 		textField_Escuderia.setText("");
 		textField_Mecanico.setText("");
 		
+		
 	}
+	/**
+	 * M&eacute;todo que segu&uacute;n la opcion a&nacute;ade un vehiculo u otro.
+	 * @return devuelve una inscripci&oacute;
+	 * @throws CampoNoValidoException Excepci&oacute;n que a parece cuando hay campos vacios
+	 * @throws DorsalNoValidoException Excepci&oacute;n que a parece cuando hay alg&uacute;n fallo en el dorsal
+	 */
 	private VehiculoDakkar tipoVehiculo() throws CampoNoValidoException , DorsalNoValidoException{
 		if(rdbtnCoche.isSelected()){
 			return new Coche( textField_Dorsal.getText(), textField_Piloto.getText(), textField_Escuderia.getText(), getPais(comboBox_Pais), 100, true, textField_Copiloto.getText(), getTipoCombustible(comboBox_Combustible), getVehiculo(comboBox_CategoriaCoches), new Date());

@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -18,8 +21,15 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Clase Acerca de
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class Acercade extends JDialog {
-
+	/**
+	 * Campo contentPanel
+	 */
 	private final JPanel contentPanel = new JPanel();
 
 

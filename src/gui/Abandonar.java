@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -22,11 +25,26 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 public class Abandonar extends VentanaPadre {
-
+		/**
+		 * ArraylistDakkar mostrarAbandonos
+		 */
 		private ArrayListDakkar mostrarAbandonos;
+		/**
+		 * Campo index
+		 */
 		private int index=0;
+		/**
+		 * Campo estado
+		 */
 		private JLabel estado;
+		/**
+		 * Campo compitiendo
+		 */
 		private JLabel compitiendo;
+		/**
+		 * Clase Abandonar
+		 * @param inscripcion arraylist con los datos de los participantes
+		 */
 	public Abandonar(final ArrayListDakkar inscripcion) {
 		setTitle("Abandonos");
 		comboBox_TipoMoto.setEnabled(false);
@@ -108,6 +126,9 @@ public class Abandonar extends VentanaPadre {
 		mostrarVehiculosDakkar(mostrarAbandonos.get(index));
 		
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest(){
 	if(index+1==mostrarAbandonos.size())
 		posterior.setEnabled(false);
@@ -119,16 +140,25 @@ public class Abandonar extends VentanaPadre {
 	else
 		anterior.setEnabled(true);
 }
-
-private void mostrarSiguiente(){
-	mostrarVehiculosDakkar(mostrarAbandonos.get(++index));
-	bottonTest();
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
+	private void mostrarSiguiente(){
+		mostrarVehiculosDakkar(mostrarAbandonos.get(++index));
+		bottonTest();
 }
-private void mostrarAnterior(){
-	mostrarVehiculosDakkar(mostrarAbandonos.get(--index));
-	bottonTest();
-}
-private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
+	private void mostrarAnterior(){
+		mostrarVehiculosDakkar(mostrarAbandonos.get(--index));
+		bottonTest();
+}	
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;
+	 */
+	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 	if(vehiculo instanceof Coche){
 		Coche coche=(Coche) vehiculo;
 		comboBox_CategoriaCoches.setVisible(true);
@@ -273,6 +303,11 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		
 	}
 }
+	/**
+	 * M&eacute;todo que permite hacer a un participante abandonar
+	 * @param inscripcion arraylist con la informaci&oacute;n
+	 * @param vehiculo Vehiculo del participante
+	 */
 	private void abandonoVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche)vehiculo;
@@ -290,6 +325,11 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 			
 		}
 	}
+	/**
+	 * M&eacute;todo que permite hacer a un participante volver a la competici&oacute;n
+	 * @param inscripcion arraylist con la informaci&oacute;n
+	 * @param vehiculo Vehiculo del participante
+	 */
 	private void repararVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche)vehiculo;

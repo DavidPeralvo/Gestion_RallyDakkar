@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -18,9 +21,19 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase Buscar por categoria de coches
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class BuscarCategoriaCoches extends VentanaPadre {
+	/**
+	 * Campo CategoriaCoches
+	 */
 	private ArrayList<VehiculoDakkar>categoriaCoches;
+	/**
+	 * Campo index
+	 */
 	private int index=0;
 	
 
@@ -121,6 +134,9 @@ public class BuscarCategoriaCoches extends VentanaPadre {
 		
 	
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 private void bottonTest() {
 		
 		if(index+1==categoriaCoches.size())
@@ -133,20 +149,32 @@ private void bottonTest() {
 		else
 			anterior.setEnabled(true);
 	}
-	
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(categoriaCoches.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(categoriaCoches.get(--index));
 		bottonTest();
 	}
-	
+		/**
+		 * M&eacute;todo que obtiene la categor&iacute;a de coches
+		 * @param combo_boxCategoriaCoches combox de categor&iacute;a de coches
+		 * @return La categor&iacute;a de coche elegida
+		 */
 	CategoriaVehiculos getVehiculo(JComboBox<CategoriaVehiculos> combo_boxCategoriaCoches) {
 		CategoriaVehiculos coche = (CategoriaVehiculos) combo_boxCategoriaCoches.getSelectedItem();
 		return coche;}
-	
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		Coche coche=(Coche) vehiculo;
 		textField_Dorsal.setText(coche.getDorsal());

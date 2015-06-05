@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -17,10 +20,19 @@ import proyecto.VehiculoDakkar;
 import java.awt.color.CMMException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * M&eacute;todo que lista todas las incripciones
+ * @author David Peralvo
+ * @version 1.0
+ */
 public class Mostrar extends VentanaPadre {
-		private int index=0;
-		private int error=-1;
+	/**
+	 * Campo index	
+	 */
+	private int index=0;
+	/**
+	 * Arraylist InscripcionMostrar
+	 */
 		private ArrayListDakkar inscripcionMostrar;
 
 	public Mostrar(ArrayListDakkar inscripcion) {
@@ -83,6 +95,9 @@ public class Mostrar extends VentanaPadre {
 	
 		
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 		
 		if(index+1==inscripcionMostrar.size())
@@ -95,16 +110,24 @@ public class Mostrar extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
-	
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(inscripcionMostrar.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(inscripcionMostrar.get(--index));
 		bottonTest();
 	}
-	
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		if(vehiculo instanceof Coche){
 			Coche coche=(Coche) vehiculo;

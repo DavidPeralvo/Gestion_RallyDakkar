@@ -1,6 +1,10 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
@@ -18,9 +22,20 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+/**
+ * Clase Buscar por clase de Camiones
+ * @author David Peralvo
+ *@version 1.0
+ */
 
 public class BuscarClaseCamiones extends VentanaPadre {
+		/**
+		 * Campo index
+		 */
 		private int index=0;
+		/**
+		 * Campo CategoriaCoches
+		 */
 		private ArrayList<VehiculoDakkar> claseCamiones;
 
 	
@@ -114,6 +129,9 @@ public class BuscarClaseCamiones extends VentanaPadre {
 			
 		}
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 		
 		if(index+1==claseCamiones.size())
@@ -126,19 +144,33 @@ public class BuscarClaseCamiones extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
-
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(claseCamiones.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(claseCamiones.get(--index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo que obtiene la clase de Camiones
+	 * @param claseCamionesComboBox combobox de clase de camiones
+	 * @return La clase de camiones elegida
+	 */
 	ClaseCamiones getClaseCamion(JComboBox<ClaseCamiones>claseCamionesComboBox){
 		ClaseCamiones claseCamion = (ClaseCamiones)claseCamionesComboBox.getSelectedItem();
 		return claseCamion;
-}
+}	
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		Camiones camion=(Camiones)vehiculo;
 		textField_Dorsal.setText(camion.getDorsal());

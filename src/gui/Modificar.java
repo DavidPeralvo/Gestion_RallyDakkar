@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -27,7 +30,11 @@ import proyecto.Mototipo;
 
 import proyecto.Paises;
 import proyecto.VehiculoDakkar;
-
+/**
+ * Clase Modificar
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class Modificar extends VentanaPadre {
 		private int  index=0;
 		private ArrayListDakkar inscripcionModificar;
@@ -115,7 +122,9 @@ public class Modificar extends VentanaPadre {
 		
 				
 	}
-	
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest(){
 	if(index+1==inscripcionModificar.size())
 		posterior.setEnabled(false);
@@ -127,16 +136,24 @@ public class Modificar extends VentanaPadre {
 	else
 		anterior.setEnabled(true);
 }
-
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 private void mostrarSiguiente(){
 	mostrarVehiculosDakkar(inscripcionModificar.get(++index));
 	bottonTest();
 }
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 private void mostrarAnterior(){
 	mostrarVehiculosDakkar(inscripcionModificar.get(--index));
 	bottonTest();
 }
-
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 	if(vehiculo instanceof Coche){
 		Coche coche=(Coche) vehiculo;
@@ -246,6 +263,12 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		
 	}
 }
+	/**
+	 * M&eacute;todo que modifica el veh&iacute;
+	 * @param inscripcion arraylist donde se guarda la informaci&oacute;n
+	 * @param vehiculo vehiculo de la inscripci&oacute;
+	 * @throws CampoNoValidoException Excepci&oacute;n que a parece cuando hay campos vacios
+	 */
 	private void modificarVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo) throws CampoNoValidoException {
 		if(vehiculo instanceof Coche){
 			Coche coche = (Coche)vehiculo;

@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -16,10 +19,23 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase Buscar por coches
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class MostrarMoto extends VentanaPadre {
+	/**
+	 * Arraylist mostrarMotos
+	 */
 	private ArrayList<VehiculoDakkar>mostrarMotos;
+	/**
+	 * Index
+	 */
 	private int index;
+	/**
+	 * opcion
+	 */
 	private int opcion=2;
 
 	public MostrarMoto(ArrayListDakkar inscripcion) {
@@ -101,7 +117,9 @@ public class MostrarMoto extends VentanaPadre {
 		
 
 	}
-	
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 		
 		if(index+1==mostrarMotos.size())
@@ -114,16 +132,24 @@ public class MostrarMoto extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
-	
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(mostrarMotos.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(mostrarMotos.get(--index));
 		bottonTest();
 	}
-	
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		Moto moto=(Moto) vehiculo;
 		textField_Dorsal.setText(moto.getDorsal());

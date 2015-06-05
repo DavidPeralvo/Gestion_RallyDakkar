@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -23,7 +26,11 @@ import proyecto.Mototipo;
 import proyecto.ClaseCamiones;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Ventana Padre de todas las ventanas de GUI
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class VentanaPadre extends JDialog {
 
 	protected final JPanel contentPanel = new JPanel();

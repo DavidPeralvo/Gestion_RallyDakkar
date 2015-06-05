@@ -1,5 +1,5 @@
 /**
- * 
+ * Paquete que engloba las clases Camiones,Coches,Motos,VehiculoDakkar,excepciones,interfaces y enumeraciones
  */
 package proyecto;
 /**

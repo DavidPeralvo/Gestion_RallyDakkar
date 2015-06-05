@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -16,10 +19,23 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase Buscar por coches
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class MostrarCoches extends VentanaPadre {
+		/**
+		 * Arraylist mostrar
+		 */
 		private ArrayList<VehiculoDakkar> mostrar;
+		/**
+		 * Campo index
+		 */
 		private int index=0;
+		/**
+		 * Campo opcion
+		 */
 		private int opcion=1;
 
 	public MostrarCoches(ArrayListDakkar inscripcion) {
@@ -87,6 +103,9 @@ public class MostrarCoches extends VentanaPadre {
 		else{
 		mostrarVehiculosDakkar(mostrar.get(index));}
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 		
 		if(index+1==mostrar.size())
@@ -99,15 +118,24 @@ public class MostrarCoches extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
-	
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(mostrar.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(mostrar.get(--index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 			Coche coche=(Coche) vehiculo;
 			textField_CantCombustible.setVisible(false);

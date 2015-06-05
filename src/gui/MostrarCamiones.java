@@ -1,3 +1,6 @@
+/**
+ * Paquete que contiene la GUI del programa
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -16,10 +19,23 @@ import proyecto.VehiculoDakkar;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * M&eacute;todo que lista todos los camiones
+ * @author David Peralvo
+ *@version 1.0
+ */
 public class MostrarCamiones extends VentanaPadre {
+		/**
+		 * Campo index
+		 */
 		private int index=0;
+		/**
+		 * Campo mostrarCamiones
+		 */
 		private ArrayList<VehiculoDakkar>mostrarCamiones;
+		/**
+		 * Opcion
+		 */
 		private int opcion=3;
 
 	public MostrarCamiones(ArrayListDakkar inscripcion) {
@@ -106,6 +122,9 @@ public class MostrarCamiones extends VentanaPadre {
 
 		
 	}
+	/**
+	 * M&eacute;todo que comprueba los botones para listar
+	 */
 	private void bottonTest() {
 		
 		if(index+1==mostrarCamiones.size())
@@ -118,14 +137,24 @@ public class MostrarCamiones extends VentanaPadre {
 		else
 			anterior.setEnabled(true);
 	}
+	/**
+	 * M&eacute;todo para mostrar el siguiente participante
+	 */
 	private void mostrarSiguiente(){
 		mostrarVehiculosDakkar(mostrarCamiones.get(++index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo para mostrar al anterior participante
+	 */
 	private void mostrarAnterior(){
 		mostrarVehiculosDakkar(mostrarCamiones.get(--index));
 		bottonTest();
 	}
+	/**
+	 * M&eacute;todo que muestra los veh&iacute;culos
+	 * @param vehiculo vehiculo de la inscripci&oacute;n
+	 */
 	private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		Camiones camion= (Camiones) vehiculo;
 		textField_Dorsal.setText(camion.getDorsal());
