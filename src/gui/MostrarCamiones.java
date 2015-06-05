@@ -112,7 +112,7 @@ public class MostrarCamiones extends VentanaPadre {
 			anterior.setEnabled(false);
 		}
 		if(mostrarCamiones.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay camiones en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay camiones en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 		}
 		else{
