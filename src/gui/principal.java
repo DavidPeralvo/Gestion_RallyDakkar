@@ -547,7 +547,7 @@ public class principal {
 				return false;
 		}
 		private static int quieresGuardarNuevo() {
-			int eleccion = JOptionPane.showConfirmDialog(parentComponent, "Quieres guardar el archivo, antes de crear un concesionario nuevo?",
+			int eleccion = JOptionPane.showConfirmDialog(parentComponent, "Quieres guardar el archivo, antes de crear un Rally Dakkar nuevo?",
 					"Sobrescritura", JOptionPane.YES_NO_CANCEL_OPTION);
 			if(eleccion == JOptionPane.YES_OPTION)
 				return 1;
