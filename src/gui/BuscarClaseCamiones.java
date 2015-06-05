@@ -122,7 +122,7 @@ public class BuscarClaseCamiones extends VentanaPadre {
 		repostar.setVisible(false);
 		abandonar.setVisible(false);
 		if(claseCamiones.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay Camiones en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay Camiones en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 			btnBuscar.setEnabled(false);
 			anterior.setEnabled(false);
