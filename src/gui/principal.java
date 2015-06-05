@@ -213,7 +213,7 @@ public class principal {
 			public void actionPerformed(ActionEvent e) {
 				if(inscripcion.size()==0){
 					JOptionPane.showMessageDialog(contentPanel,
-							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+							"No hay veh&iacute;culos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 				modificar=new Modificar(inscripcion);
@@ -354,7 +354,7 @@ public class principal {
 			public void actionPerformed(ActionEvent e) {
 				if(inscripcion.size()==0){
 					JOptionPane.showMessageDialog(contentPanel,
-							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+							"No hay veh&iacute;culos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 				mostrar=new Mostrar(inscripcion);
