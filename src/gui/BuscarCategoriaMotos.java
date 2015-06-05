@@ -59,7 +59,7 @@ public class BuscarCategoriaMotos extends VentanaPadre {
 					anterior.setEnabled(false);
 				}
 				if(categoriaMotos.size()==0){
-					JOptionPane.showMessageDialog(contentPanel,"No hay motos de esta clase en la inscripción");
+					JOptionPane.showMessageDialog(contentPanel,"No hay motos de esta clase en la inscripci&oacute;n");
 					posterior.setEnabled(false);
 				}
 				else{

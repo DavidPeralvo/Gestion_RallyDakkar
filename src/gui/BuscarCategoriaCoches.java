@@ -47,7 +47,7 @@ public class BuscarCategoriaCoches extends VentanaPadre {
 					anterior.setEnabled(false);
 				}
 				if(categoriaCoches.size()==0){
-					JOptionPane.showMessageDialog(contentPanel,"No hay coches de esta categoria en la inscripción");
+					JOptionPane.showMessageDialog(contentPanel,"No hay coches de esta categoria en la inscripci&oacute;n");
 					posterior.setEnabled(false);
 				}
 				else{
