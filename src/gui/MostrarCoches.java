@@ -97,7 +97,7 @@ public class MostrarCoches extends VentanaPadre {
 			anterior.setEnabled(false);
 		}
 		if(mostrar.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay Coches en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay Coches en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 		}
 		else{

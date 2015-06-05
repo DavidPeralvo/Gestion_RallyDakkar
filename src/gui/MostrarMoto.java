@@ -109,7 +109,7 @@ public class MostrarMoto extends VentanaPadre {
 			anterior.setEnabled(false);
 		}
 		if(mostrarMotos.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay motos en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay motos en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 		}
 		else{

@@ -62,7 +62,7 @@ public class BuscarClaseCamiones extends VentanaPadre {
 					anterior.setEnabled(false);
 				}
 				if(claseCamiones.size()==0){
-					JOptionPane.showMessageDialog(contentPanel,"No hay camiones de esta clase en la inscripci&oacute;n");
+					JOptionPane.showMessageDialog(contentPanel,"No hay motos de esta clase en la inscripci&oacute;n");
 					posterior.setEnabled(false);}
 				
 				else{

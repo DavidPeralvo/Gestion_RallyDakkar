@@ -116,7 +116,7 @@ public class BuscarCategoriaMotos extends VentanaPadre {
 		btnBorrar.setVisible(false);
 		btnAadir.setVisible(false);
 		if(categoriaMotos.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay motos en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay motos en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 			btnBuscar.setEnabled(false);
 			anterior.setEnabled(false);

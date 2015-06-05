@@ -125,7 +125,7 @@ public class BuscarCategoriaCoches extends VentanaPadre {
 		anterior.setEnabled(false);
 		posterior.setEnabled(false);
 		if(categoriaCoches.size()==0){
-			JOptionPane.showMessageDialog(contentPanel,"No hay coches en la inscripción");
+			JOptionPane.showMessageDialog(contentPanel,"No hay coches en la inscripci&oacute;n");
 			posterior.setEnabled(false);
 			btnBuscar.setEnabled(false);
 			anterior.setEnabled(false);
