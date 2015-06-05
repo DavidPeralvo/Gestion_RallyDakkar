@@ -25,6 +25,10 @@ import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 public class principal {
 	private Borrar borrar;
@@ -40,10 +44,18 @@ public class principal {
 	private static Component parentComponent;
 	private Modificar modificar;
 	private Mostrar mostrar;
-
-	/**
-	 * Launch the application.
-	 */
+	private MostrarCoches mostrarCoches;
+	private MostrarMoto mostrarMoto;
+	private MostrarCamiones mostrarCamiones;
+	private BuscarCategoriaCoches buscarCategoriaCoches;
+	private BuscarCategoriaMotos buscarCategoriaMotos;
+	private BuscarClaseCamiones buscarClaseCamiones;
+	private EjecutarEtapa ejecutarEtapa;
+	private Abandonar abandonar;
+	private Repostar repostar;
+	private Acercade acerca;
+	private Instrucciones instrucciones;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -69,15 +81,28 @@ public class principal {
 	 */
 	private void initialize() {
 		frmDakkar = new JFrame();
+		frmDakkar.setResizable(false);
 		frmDakkar.setTitle("Sintitulo");
-		frmDakkar.setBounds(100, 100, 450, 300);
+		frmDakkar.setBounds(100, 100, 606, 410);
 		frmDakkar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDakkar.getContentPane().setLayout(null);
+		
+		JLabel lblRallyDakkar = new JLabel("Gesti\u00F3n Rally Dakkar - David Peralvo");
+		lblRallyDakkar.setForeground(Color.WHITE);
+		lblRallyDakkar.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		lblRallyDakkar.setBounds(80, 289, 520, 84);
+		frmDakkar.getContentPane().add(lblRallyDakkar);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\David Peralvo\\workspace\\proyectoFinal\\imagenes\\Dakar-etape-11-Des-podiums-chamboules_articlethumbnail.jpg"));
+		lblNewLabel.setBounds(0, -11, 604, 372);
+		frmDakkar.getContentPane().add(lblNewLabel);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frmDakkar.setJMenuBar(menuBar);
 		
 		JMenu mnArchivo = new JMenu("Archivo");
+		mnArchivo.setMnemonic('a');
 		menuBar.add(mnArchivo);
 		
 		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
@@ -142,6 +167,7 @@ public class principal {
 		mnArchivo.add(mntmSalir);
 		
 		JMenu mnParticipante = new JMenu("Participante");
+		mnParticipante.setMnemonic('p');
 		menuBar.add(mnParticipante);
 		
 		JMenuItem mntmAadir = new JMenuItem("A\u00F1adir");
@@ -150,6 +176,7 @@ public class principal {
 			public void actionPerformed(ActionEvent e) {
 				annadir=new Annadir(inscripcion);
 				annadir.setVisible(true);
+				modificado=true;
 				
 			}
 		});
@@ -166,27 +193,10 @@ public class principal {
 				else{
 				borrar=new Borrar(inscripcion);
 				borrar.setVisible(true);}
+				modificado=true;
 			}
 		});
 		mnParticipante.add(mntmBorrar);
-		
-		JSeparator separator_2 = new JSeparator();
-		mnParticipante.add(separator_2);
-		
-		JMenuItem mntmMostrar = new JMenuItem("Mostrar");
-		mntmMostrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(inscripcion.size()==0){
-					JOptionPane.showMessageDialog(contentPanel,
-							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
-				}
-				else{
-				mostrar=new Mostrar(inscripcion);
-				mostrar.setVisible(true);}
-			}
-		});
-		mntmMostrar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK));
-		mnParticipante.add(mntmMostrar);
 		
 		JSeparator separator_3 = new JSeparator();
 		mnParticipante.add(separator_3);
@@ -201,69 +211,234 @@ public class principal {
 				else{
 				modificar=new Modificar(inscripcion);
 				modificar.setVisible(true);}
+				modificado=true;
 			}
 		});
 		mntmModificar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK));
 		mnParticipante.add(mntmModificar);
 		
-		JMenu mnBuscar = new JMenu("Buscar");
-		menuBar.add(mnBuscar);
-		
-		JMenuItem mntmPorVehiculo = new JMenuItem("Por vehiculo");
-		mntmPorVehiculo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK));
-		mnBuscar.add(mntmPorVehiculo);
-		
-		JMenuItem mntmPorMarca = new JMenuItem("Por marca");
-		mntmPorMarca.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK));
-		mnBuscar.add(mntmPorMarca);
-		
-		JMenuItem mntmPorDorsal = new JMenuItem("Por dorsal");
-		mntmPorDorsal.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK));
-		mnBuscar.add(mntmPorDorsal);
+		JSeparator separator_7 = new JSeparator();
+		mnParticipante.add(separator_7);
 		
 		JMenuItem mntmContarParticipantes = new JMenuItem("Contar participantes");
+		mnParticipante.add(mntmContarParticipantes);
 		mntmContarParticipantes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 		mntmContarParticipantes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(contentPanel,
-						"Hay "+inscripcion.size()+" coches");
+						"Hay "+inscripcion.size()+" veh\u00EDculo");
 				
 			}
 		});
 		
+		JMenu mnBuscar = new JMenu("Buscar");
+		mnBuscar.setMnemonic('b');
+		menuBar.add(mnBuscar);
+		
+		JMenu mnPorVehiculo = new JMenu("Por veh\u00EDculo");
+		mnBuscar.add(mnPorVehiculo);
+		
+		JMenuItem mntmCoche = new JMenuItem("Coche");
+		mntmCoche.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_MASK));
+		mntmCoche.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				mostrarCoches=new MostrarCoches(inscripcion);
+				mostrarCoches.setVisible(true);
+				}
+				
+				
+			}
+		});
+		mnPorVehiculo.add(mntmCoche);
+		
+		JMenuItem mntmMoto = new JMenuItem("Moto");
+		mntmMoto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.SHIFT_MASK));
+		mntmMoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				mostrarMoto=new MostrarMoto(inscripcion);
+				mostrarMoto.setVisible(true);
+				}
+				
+				
+			}
+		});
+		mnPorVehiculo.add(mntmMoto);
+		
+		JMenuItem mntmCamin = new JMenuItem("Cami\u00F3n");
+		mntmCamin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.SHIFT_MASK));
+		mntmCamin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				mostrarCamiones=new MostrarCamiones(inscripcion);
+				mostrarCamiones.setVisible(true);}
+			}
+		});
+		mnPorVehiculo.add(mntmCamin);
+		
+		JMenu mnPorCategoriaclase = new JMenu("Por categoria/clase");
+		mnBuscar.add(mnPorCategoriaclase);
+		
+		JMenuItem mntmCategoriaDeCoches = new JMenuItem("Categoria de Coches");
+		mntmCategoriaDeCoches.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK | InputEvent.ALT_MASK));
+		mntmCategoriaDeCoches.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				buscarCategoriaCoches=new BuscarCategoriaCoches(inscripcion);
+				buscarCategoriaCoches.setVisible(true);}
+			}
+		});
+		mnPorCategoriaclase.add(mntmCategoriaDeCoches);
+		
+		JMenuItem mntmCategoriaDeMotos = new JMenuItem("Categoria de Motos");
+		mntmCategoriaDeMotos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_MASK | InputEvent.ALT_MASK));
+		mntmCategoriaDeMotos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				buscarCategoriaMotos=new BuscarCategoriaMotos(inscripcion);
+				buscarCategoriaMotos.setVisible(true);}
+			}
+		});
+		mnPorCategoriaclase.add(mntmCategoriaDeMotos);
+		
+		JMenuItem mntmClaseDeCamiones = new JMenuItem("Clase de Camiones");
+		mntmClaseDeCamiones.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_MASK | InputEvent.ALT_MASK));
+		mntmClaseDeCamiones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				buscarClaseCamiones=new BuscarClaseCamiones(inscripcion);
+				buscarClaseCamiones.setVisible(true);}
+				
+			}
+		});
+		mnPorCategoriaclase.add(mntmClaseDeCamiones);
+		
+		JSeparator separator_2 = new JSeparator();
+		mnBuscar.add(separator_2);
+		
+		JMenuItem mntmMostrar = new JMenuItem("Lista de Inscritos");
+		mnBuscar.add(mntmMostrar);
+		mntmMostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				mostrar=new Mostrar(inscripcion);
+				mostrar.setVisible(true);}
+			}
+		});
+		mntmMostrar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK));
+		
 		JSeparator separator_4 = new JSeparator();
 		mnBuscar.add(separator_4);
-		mnBuscar.add(mntmContarParticipantes);
 		
 		JMenu mnRally = new JMenu("Rally");
+		mnRally.setMnemonic('r');
 		menuBar.add(mnRally);
 		
-		JMenuItem mntmAsignarTiempo = new JMenuItem("Asignar Tiempo");
+		JMenuItem mntmAsignarTiempo = new JMenuItem("Ejecutar etapa");
+		mntmAsignarTiempo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
+		mntmAsignarTiempo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				ejecutarEtapa=new EjecutarEtapa(inscripcion);
+				ejecutarEtapa.setVisible(true);}
+				modificado=true;
+				
+			}
+		});
 		mnRally.add(mntmAsignarTiempo);
 		
 		JSeparator separator_5 = new JSeparator();
 		mnRally.add(separator_5);
 		
-		JMenuItem mntmPenalizaciones = new JMenuItem("Penalizaciones");
-		mnRally.add(mntmPenalizaciones);
-		
 		JMenuItem mntmAbandonos = new JMenuItem("Abandonos");
+		mntmAbandonos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
+		mntmAbandonos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				abandonar=new Abandonar(inscripcion);
+				abandonar.setVisible(true);
+				}
+				modificado=true;
+			}
+		});
 		mnRally.add(mntmAbandonos);
+		
+		JMenuItem mntmClasificacin = new JMenuItem("Repostar");
+		mntmClasificacin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
+		mntmClasificacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(inscripcion.size()==0){
+					JOptionPane.showMessageDialog(contentPanel,
+							"No hay vehiculos inscritos", "Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				repostar=new Repostar(inscripcion);
+				repostar.setVisible(true);}
+				modificado=true;
+			}
+		});
 		
 		JSeparator separator_6 = new JSeparator();
 		mnRally.add(separator_6);
-		
-		JMenuItem mntmClasificacin = new JMenuItem("Clasificaci\u00F3n");
 		mnRally.add(mntmClasificacin);
 		
-		JMenu mnAyuda = new JMenu("Ayuda");
+		JMenu mnAyuda = new JMenu("Help");
+		mnAyuda.setMnemonic('h');
 		menuBar.add(mnAyuda);
 		
 		JMenuItem mntmInstrucciones = new JMenuItem("Instrucciones");
+		mntmInstrucciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				instrucciones=new Instrucciones();
+				instrucciones.setVisible(true);
+			}
+		});
 		mntmInstrucciones.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
 		mnAyuda.add(mntmInstrucciones);
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
+		mntmAcercaDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			acerca=new Acercade();
+			acerca.setVisible(true);}
+		});
 		mntmAcercaDe.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.ALT_MASK));
 		mnAyuda.add(mntmAcercaDe);
 	}
@@ -374,4 +549,7 @@ public class principal {
 				else{return 3; }
 			}
 		}
+		
+			
+		
 }

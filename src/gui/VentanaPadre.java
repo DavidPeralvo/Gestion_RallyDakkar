@@ -33,7 +33,7 @@ public class VentanaPadre extends JDialog {
 	protected JTextField textField_Copiloto;
 	protected JTextField textField_Mecanico;
 	protected JTextField textField_Escuderia;
-	protected JTextField textField_Velocidad;
+	protected JTextField textField_KM;
 	protected JTextField textField_CantCombustible;
 	protected JTextField textField_FechaInscripcion;
 	protected JLabel lblDorsal;
@@ -68,6 +68,9 @@ public class VentanaPadre extends JDialog {
 	protected JButton modificar;
 	protected JButton abandonar;
 	protected JButton repostar;
+	protected JButton btnBuscar;
+	protected JButton btnReparar;
+	protected JButton btnActualizar;
 
 
 	/**
@@ -210,21 +213,21 @@ public class VentanaPadre extends JDialog {
 		comboBox_ClaseCamiones.setBounds(110, 180, 124, 20);
 		contentPanel.add(comboBox_ClaseCamiones);
 		
-		lblVelocidad = new JLabel("Velocidad");
-		lblVelocidad.setBounds(25, 230, 46, 14);
+		lblVelocidad = new JLabel("Kilometros etapa");
+		lblVelocidad.setBounds(25, 230, 108, 14);
 		contentPanel.add(lblVelocidad);
 		
-		textField_Velocidad = new JTextField();
-		textField_Velocidad.setBounds(81, 227, 86, 20);
-		contentPanel.add(textField_Velocidad);
-		textField_Velocidad.setColumns(10);
+		textField_KM = new JTextField();
+		textField_KM.setBounds(136, 227, 86, 20);
+		contentPanel.add(textField_KM);
+		textField_KM.setColumns(10);
 		
 		lblCantidadDeCombustible = new JLabel("Cantidad de Combustible");
-		lblCantidadDeCombustible.setBounds(188, 230, 142, 14);
+		lblCantidadDeCombustible.setBounds(287, 230, 142, 14);
 		contentPanel.add(lblCantidadDeCombustible);
 		
 		textField_CantCombustible = new JTextField();
-		textField_CantCombustible.setBounds(314, 227, 86, 20);
+		textField_CantCombustible.setBounds(439, 227, 86, 20);
 		contentPanel.add(textField_CantCombustible);
 		textField_CantCombustible.setColumns(10);
 		
@@ -240,6 +243,15 @@ public class VentanaPadre extends JDialog {
 			 buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			
+			btnActualizar = new JButton("Actualizar");
+			buttonPane.add(btnActualizar);
+			
+			btnReparar = new JButton("Reparar");
+			buttonPane.add(btnReparar);
+			
+			btnBuscar = new JButton("Buscar");
+			buttonPane.add(btnBuscar);
 			
 			modificar = new JButton("Modificar");
 			buttonPane.add(modificar);

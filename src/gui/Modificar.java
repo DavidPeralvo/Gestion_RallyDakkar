@@ -15,17 +15,16 @@ import javax.swing.border.EmptyBorder;
 
 import proyecto.ArrayListDakkar;
 import proyecto.Camiones;
+import proyecto.CampoNoValidoException;
 import proyecto.CategoriaMotos;
 import proyecto.CategoriaVehiculos;
 import proyecto.ClaseCamiones;
 import proyecto.Coche;
 import proyecto.Combustible;
-import proyecto.CopilotoNoValidoException;
-import proyecto.EscuderiaNoValidoException;
-import proyecto.MecanicoNoValidoException;
+
 import proyecto.Moto;
 import proyecto.Mototipo;
-import proyecto.NombreNoValidoException;
+
 import proyecto.Paises;
 import proyecto.VehiculoDakkar;
 
@@ -53,8 +52,7 @@ public class Modificar extends VentanaPadre {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					modificarVehiculo(inscripcion, inscripcionModificar.get(index));
-				} catch (NombreNoValidoException | CopilotoNoValidoException
-						| EscuderiaNoValidoException | MecanicoNoValidoException e1) {
+				} catch (CampoNoValidoException e1) {
 					
 					JOptionPane.showMessageDialog(contentPanel,
 							e1.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
@@ -78,6 +76,7 @@ public class Modificar extends VentanaPadre {
 		setBounds(100, 100, 606, 410);
 		textField_CantCombustible.setVisible(false);
 		lblCantidadDeCombustible.setVisible(false);
+		btnBuscar.setVisible(false);
 		lblFechaDeInscripcion.setVisible(false);
 		textField_FechaInscripcion.setVisible(false);
 		lblVelocidad.setVisible(false);
@@ -87,12 +86,14 @@ public class Modificar extends VentanaPadre {
 		comboBox_Combustible.setVisible(false);
 		comboBox_TipoMoto.setVisible(false);
 		lblClase.setVisible(false);
+		btnActualizar.setVisible(false);
+		btnReparar.setVisible(false);
 		lblCategoria.setVisible(false);
 		lblCopiloto.setVisible(false);
 		lblTipoDeMoto.setVisible(false);
 		textField_Copiloto.setVisible(false);
 		textField_Mecanico.setVisible(false);
-		textField_Velocidad.setVisible(false);
+		textField_KM.setVisible(false);
 		lblMecanico.setVisible(false);
 		lblCombustible.setVisible(false);
 		btnAadir.setVisible(false);
@@ -105,6 +106,9 @@ public class Modificar extends VentanaPadre {
 		modificar.setVisible(true);
 		abandonar.setVisible(false);
 		anterior.setEnabled(false);
+		if(inscripcionModificar.size()==1){
+			posterior.setEnabled(false);
+		}
 		mostrarVehiculosDakkar(inscripcionModificar.get(index));
 
 		
@@ -154,7 +158,7 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		textField_Mecanico.setVisible(false);
 		textField_FechaInscripcion.setVisible(true);
 		lblFechaDeInscripcion.setVisible(true);
-		textField_Velocidad.setVisible(false);
+		textField_KM.setVisible(false);
 		lblMecanico.setVisible(false);
 		lblCombustible.setVisible(true);
 		cancelButton.setVisible(true);
@@ -189,7 +193,7 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		lblTipoDeMoto.setVisible(true);
 		textField_Copiloto.setVisible(false);
 		textField_Mecanico.setVisible(false);
-		textField_Velocidad.setVisible(false);
+		textField_KM.setVisible(false);
 		lblMecanico.setVisible(false);
 		lblCombustible.setVisible(false);
 		cancelButton.setVisible(true);
@@ -223,7 +227,7 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		lblFechaDeInscripcion.setVisible(true);
 		textField_Copiloto.setVisible(true);
 		textField_Mecanico.setVisible(true);
-		textField_Velocidad.setVisible(false);
+		textField_KM.setVisible(false);
 		lblMecanico.setVisible(true);
 		lblCombustible.setVisible(false);
 		cancelButton.setVisible(true);
@@ -242,7 +246,7 @@ private void mostrarVehiculosDakkar(VehiculoDakkar vehiculo){
 		
 	}
 }
-	private void modificarVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo) throws NombreNoValidoException, CopilotoNoValidoException, EscuderiaNoValidoException, MecanicoNoValidoException{
+	private void modificarVehiculo(ArrayListDakkar inscripcion,VehiculoDakkar vehiculo) throws CampoNoValidoException {
 		if(vehiculo instanceof Coche){
 			Coche coche = (Coche)vehiculo;
 			coche.setNombre(textField_Piloto.getText());

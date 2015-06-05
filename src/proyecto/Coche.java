@@ -10,8 +10,8 @@ public class Coche extends VehiculoDakkar implements Serializable {
 	private  CategoriaVehiculos categoria;
 	private String tipoVehiculo;
 	static final private Pattern partternNombre=Pattern.compile("^\\w+");
-	public Coche(String tipoVehiculo,String dorsal, String nombre, String escuderia, Paises pais,int velocidad, boolean motor,String copiloto,Combustible combustible,CategoriaVehiculos categoria, Date fecha) throws NombreNoValidoException, EscuderiaNoValidoException, DorsalNoValidoException, CopilotoNoValidoException  {
-		super(tipoVehiculo,dorsal, nombre, escuderia, pais, velocidad, motor,fecha);
+	public Coche(String dorsal, String nombre, String escuderia, Paises pais,int cantidadCombustible, boolean motor,String copiloto,Combustible combustible,CategoriaVehiculos categoria, Date fecha) throws CampoNoValidoException, DorsalNoValidoException  {
+		super(dorsal, nombre, escuderia, pais, cantidadCombustible, motor,fecha);
 		this.categoria=categoria;
 		this.combustible=combustible;
 		setCopiloto(copiloto);
@@ -20,11 +20,11 @@ public class Coche extends VehiculoDakkar implements Serializable {
 	public String getCopiloto() {
 		return copiloto;
 	}
-	public void setCopiloto(String copiloto) throws CopilotoNoValidoException{
+	public void setCopiloto(String copiloto) throws CampoNoValidoException{
 		if(copiloto==null| comprobarCampos(copiloto)){
 			this.copiloto = copiloto;}
 		else{
-			throw new CopilotoNoValidoException("No se ha introducido el copiloto");
+			throw new CampoNoValidoException("No se ha introducido el copiloto");
 		}
 	}
 	
@@ -47,6 +47,13 @@ public class Coche extends VehiculoDakkar implements Serializable {
 	}	
 	private boolean comprobarCampos(String campo) {
 		return partternNombre.matcher(campo).matches();
+	}
+	@Override
+	public float getGastoCombustible(GastoCombustible gastoCombustible,
+			float etapaDakkar) {
+		float gastoTotal;
+		gastoTotal=gastoCombustible.getGasto()*etapaDakkar;
+		return gastoTotal;
 	}
 
 }

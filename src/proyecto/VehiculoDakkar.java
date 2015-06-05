@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.regex.Pattern;
 
-public class VehiculoDakkar implements Serializable{
+public abstract class VehiculoDakkar implements Serializable, Combustiable{
 	protected  String dorsal;
 	private  String nombre;
 	private  String escuderia;
 	private  Paises pais;
-	private int velocidad;
+	private float cantidadCombustible;
 	private boolean motor;
-	private String tipoVehiculo;
 	static final private Pattern patternDorsal = Pattern.compile("^\\d{4}$");
 	static final private Pattern partternNombre=Pattern.compile("^\\w+");
 	private Date fechaCreacion;
@@ -19,8 +18,8 @@ public class VehiculoDakkar implements Serializable{
 	public String getDorsal() {
 		return dorsal;
 	}
-	public VehiculoDakkar(String tipoVehiculo,String dorsal,String nombre,String escuderia,Paises pais,int velocidad,boolean motor, Date fechaCreacion) throws NombreNoValidoException, EscuderiaNoValidoException, DorsalNoValidoException{
-		this.tipoVehiculo=tipoVehiculo;
+	public VehiculoDakkar(String dorsal,String nombre,String escuderia,Paises pais,float cantidadCombustible,boolean motor, Date fechaCreacion) throws CampoNoValidoException, DorsalNoValidoException{
+		this.cantidadCombustible=cantidadCombustible;
 		setDorsal(dorsal);
 		setNombre(nombre);
 		setEscuderia(escuderia);
@@ -31,20 +30,14 @@ public class VehiculoDakkar implements Serializable{
 		setDorsal(dorsal);
 	}
 	
-	public String getTipoVehiculo() {
-		return tipoVehiculo;
-	}
-	public void setTipoVehiculo(String tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
-	}
 	
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre)throws NombreNoValidoException {
+	public void setNombre(String nombre)throws CampoNoValidoException {
 		if(nombre==null|comprobarCampos(nombre)==false){
-			throw new NombreNoValidoException("No se ha introducido nombre");}
+			throw new CampoNoValidoException("No se ha introducido nombre");}
 		this.nombre=nombre;
 		
 	}
@@ -53,9 +46,9 @@ public class VehiculoDakkar implements Serializable{
 		return escuderia;
 	}
 
-	public void setEscuderia(String escuderia) throws EscuderiaNoValidoException{
+	public void setEscuderia(String escuderia) throws CampoNoValidoException{
 		if(escuderia==null|comprobarCampos(escuderia)==false){
-			throw new EscuderiaNoValidoException("No se ha introducido ninguna escuderia");}
+			throw new CampoNoValidoException("No se ha introducido ninguna escuderia");}
 		else{
 		this.escuderia = escuderia;}
 	}
@@ -80,19 +73,12 @@ public class VehiculoDakkar implements Serializable{
 		this.pais = pais;
 	}
 
-	private int getVelocidad() {
-		return velocidad;
-	}
 
-	private void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
-	}
-
-	private boolean isMotor() {
+	public boolean isMotor() {
 		return motor;
 	}
 
-	private void setMotor(boolean motor) {
+	public void setMotor(boolean motor) {
 		this.motor = motor;
 	}
 	
@@ -105,12 +91,15 @@ public class VehiculoDakkar implements Serializable{
 	private static boolean comprobarValidez(String dorsal) {
 		return patternDorsal.matcher(dorsal).matches() ;
 	}
-	@Override
-	public String toString() {
-		return tipoVehiculo+" con dorsal " + dorsal + " , nombre del piloto: " + nombre
-				+ " , nombre de las escuderia: " + escuderia + " , pais de procedencia " + pais
-				+ ", velocidad " + velocidad + " km/h , motor " + motor+", ";
+	public float getCantidadCombustible() {
+		return cantidadCombustible;
 	}
+	public void setCantidadCombustible(float cantidadCombustible) {
+		this.cantidadCombustible = cantidadCombustible;
+	}
+	@Override
+	public abstract float getGastoCombustible(GastoCombustible gastoCombustible,float etapaDakkar);
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

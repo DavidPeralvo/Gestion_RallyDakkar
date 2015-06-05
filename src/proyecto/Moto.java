@@ -9,8 +9,8 @@ public class Moto extends VehiculoDakkar implements Serializable {
 	private CategoriaMotos categoria;
 	static final private Pattern patternDorsal = Pattern
 			.compile("^\\d{4}$");
-	public Moto(String tipoVehiculo,String dorsal, String nombre, String escuderia, Paises pais,int velocidad, boolean motor,Mototipo tipo,CategoriaMotos categoria,Date fecha) throws NombreNoValidoException, EscuderiaNoValidoException, DorsalNoValidoException {
-		super(tipoVehiculo,dorsal, nombre, escuderia, pais, velocidad, motor,fecha);
+	public Moto(String dorsal, String nombre, String escuderia, Paises pais,float cantidadCombustible, boolean motor,Mototipo tipo,CategoriaMotos categoria,Date fecha) throws DorsalNoValidoException, CampoNoValidoException {
+		super(dorsal, nombre, escuderia, pais, cantidadCombustible, motor,fecha);
 		this.tipo=tipo;
 		this.categoria=categoria;
 	}
@@ -29,6 +29,13 @@ public class Moto extends VehiculoDakkar implements Serializable {
 	}
 	public void setCategoria(CategoriaMotos categoria) {
 		this.categoria = categoria;
+	}
+	@Override
+	public float getGastoCombustible(GastoCombustible gastoCombustible,
+			float etapaDakkar) {
+		float gastoTotal;
+		gastoTotal=gastoCombustible.MOTO.getGasto()*etapaDakkar;
+		return gastoTotal;
 	}
 
 }
